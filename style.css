@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    --bg-clr: rgb(2, 17, 32);
+    --txt-clr: #ee4209;
+    --acc-clr: rgb(34, 183, 173);
+    background-color: var(--bg-clr);
+    color: var(--txt-clr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.header{
+    
+    position: absolute;
+    top: 7%;
+    left: 3rem;
+    background-image: linear-gradient(45deg, rgba(11, 83, 112, 0.612) 55%,  rgb(12, 164, 246));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.header span{
+    color: rgb(255, 255, 255);
+    font-weight: 100;
+    font-size: 70%;
+    letter-spacing: 2px;
+    font-family: monospace;
+}
+.header p{
+    font-family: cursive;
+    color: var(--txt-clr);
+    font-weight: 100;
+}
+.links{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(0%, -50%);
+}
+.links ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.links ul li{
+    list-style: none;
+    animation: fade calc(.8 * var(--i)) ease-out forwards;
+}
+@keyframes fade {
+    from{
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(20px);
+    }
+}
+.links ul li a{
+    font-size: 1.6rem;
+    color: var(--acc-clr);
+    
+
+}
+.links ul li a:hover{
+    transition: .4s all;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--txt-clr);
+}
+.menu{
+    display: none;
+}
+
+
+.cont{
+    --dark-acc: rgb(9, 35, 76);
+    position: relative;
+    width: 31rem;
+}
+.cont > *{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.cont::after, .cont::before{
+    font-size: 20rem;
+    position: absolute;
+    color: var(--bg-clr);
+    text-shadow: 2px 5px var(--dark-acc);
+    font-family: monospace;
+    z-index: -3;
+}
+.cont::before{
+    content: "</";
+    top: -13rem;
+    left: -23rem;
+    letter-spacing: 5px;
+}
+.cont::after{
+    content: ">";
+    top: -13rem;
+    left: 35rem;
+}
+
+.cont img{
+    width: 70%;
+    z-index: 0;
+    left: 60%;
+    transition: .7s;
+    animation: float 3.5s ease-in-out forwards;
+}
+.cont img:hover{
+    rotate:-5deg;
+}
+@keyframes float{
+    from{
+        left: 0%;
+    }
+    to{
+        left:  72%;
+    }
+}
+.text{
+    color: transparent;
+    -webkit-text-stroke: 1px var(--bg-clr);
+    position: absolute;
+    font-size: 3.3rem;
+    font-weight: 900;
+    left: 30%;
+    top: 90%;
+}
+.fir{
+    z-index: -2;
+    background-image: linear-gradient(-45deg, var(--txt-clr) 60%, #f48953);
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* color: var(--txt-clr); */
+}
+
+@media screen and (max-width: 755px) {
+    .header{
+        font-size: 80%;
+    }
+    .cont{
+        width: 17rem;
+        transform: translate(1.5rem, -1rem);
+    }
+    .cont > h1{
+        font-size: 2.2rem;
+    }
+    .cont::before, .cont::after{
+        font-size: 12rem;
+    }
+    .cont::before{
+        left: -10rem;
+        top: -7rem;
+        letter-spacing: -20px;
+    }
+    .cont::after{
+        left: 15rem;
+        top: -7rem;
+    }
+    .links{
+        --trans-time: .7s;
+        top: 11%;
+        left: unset;
+        right: 2rem;  /* to 2 rem*/
+        /* background-color: red; */
+    }
+    .menu{
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: -2px;
+        left: -2.3rem;
+        /* background-color: rgb(0, 255, 221); */
+        padding: 3px;
+        font-size: 1.6rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .5s;
+    }
+    .menu.active{
+        transform: rotate(180deg);
+    }
+    .menu:hover, .menu:focus{
+        background-color: rgba(211, 211, 211, 0.116);
+    }
+    .links ul{
+        display: grid;
+        grid-template-columns: repeat(5, 0px);
+        gap: 0;
+        opacity: 0;
+        /* overflow: hidden; */
+        width: 40%;
+        transition: var(--trans-time);
+    }
+    
+    .links ul li{
+        animation: none;
+        opacity: 1;
+        align-self: flex-end;
+        top: 50%;
+    }
+    ul.strech{
+       grid-template-columns: repeat(5, 1.3rem);
+       gap: 1rem;
+       opacity: 1;
+    }
+    /* @keyframes fade {
+        from{
+            opacity: 0;
+            transform: translateX(0);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    } */
+}
